@@ -361,7 +361,7 @@
       </div>
     </section>
 
-    <!-- 2. CATALOGO (Modificado a 3 columnas en celular y 5 en web) -->
+    <!-- 2. CATALOGO -->
     <section id="view-catalogo" class="view-section hidden py-6 sm:py-12 space-y-6 sm:space-y-8">
       <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
         <div class="space-y-3 sm:space-y-4">
@@ -379,7 +379,7 @@
             <button onclick="filterCatalog('preventa')" class="cat-tab px-4.5 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-lg shadow-amber-600/30 animate-pulse-badge transition shrink-0 flex items-center gap-1.5 cursor-pointer card-3d" style="animation-delay: 1s;"><i class="fa-solid fa-bolt"></i> Preventa</button>
           </div>
         </div>
-        <div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-5" id="products-container"></div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-5" id="products-container"></div>
       </div>
     </section>
 
@@ -1326,22 +1326,22 @@
 
     function renderCatalogGrid(list) {
       document.getElementById('products-container').innerHTML = list.map(prod => `
-        <div class="glass-card rounded-2xl p-2 sm:p-4 border border-slate-200 card-3d flex flex-col justify-between space-y-2 sm:space-y-3 bg-white/90">
-          <div class="space-y-1.5 sm:space-y-2">
+        <div class="glass-card rounded-2xl p-3 sm:p-5 border border-slate-200 card-3d flex flex-col justify-between space-y-2.5 sm:space-y-3 bg-white/90">
+          <div class="space-y-2">
             <div class="flex items-center justify-between">
-              <span class="px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[8px] sm:text-[10px] font-bold uppercase tracking-wider ${prod.tagColor}">${prod.badge}</span>
+              <span class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-wider ${prod.tagColor}">${prod.badge}</span>
             </div>
             <div class="w-full rounded-xl overflow-hidden glass-card p-1 border border-slate-200 bg-slate-50 card-3d">
               <img src="${prod.img}" alt="${prod.name}" class="aspect-square-custom rounded-lg hover:scale-105 transition duration-300">
             </div>
-            <h3 class="text-[11px] sm:text-base font-bold font-display text-slate-900 line-clamp-1">${prod.name}</h3>
-            <p class="text-slate-600 text-[10px] sm:text-xs line-clamp-2">${prod.desc}</p>
+            <h3 class="text-xs sm:text-base font-bold font-display text-slate-900 line-clamp-1">${prod.name}</h3>
+            <p class="text-slate-600 text-[11px] sm:text-xs line-clamp-2">${prod.desc}</p>
           </div>
-          <div class="flex items-center justify-between pt-2 sm:pt-3 border-t border-slate-200">
-            <span class="text-[11px] sm:text-base font-extrabold text-cyan-600 font-display">S/ ${prod.price.toFixed(2)}</span>
+          <div class="flex items-center justify-between pt-2.5 sm:pt-3 border-t border-slate-200">
+            <span class="text-xs sm:text-base font-extrabold text-cyan-600 font-display">S/ ${prod.price.toFixed(2)}</span>
             <div class="flex gap-1">
-              <button onclick="openProductModal(${prod.id})" class="p-1 sm:p-2 rounded-xl glass-card text-slate-700 hover:text-slate-900 border border-slate-300 cursor-pointer card-3d"><i class="fa-solid fa-eye text-[10px] sm:text-xs"></i></button>
-              <button onclick="addToCart(${prod.id})" class="px-2 py-1.5 sm:px-3 sm:py-2 rounded-xl bg-cyan-600 text-white font-bold text-[10px] sm:text-xs hover:bg-cyan-500 transition cursor-pointer card-3d"><i class="fa-solid fa-cart-plus"></i></button>
+              <button onclick="openProductModal(${prod.id})" class="p-1.5 sm:p-2 rounded-xl glass-card text-slate-700 hover:text-slate-900 border border-slate-300 cursor-pointer card-3d"><i class="fa-solid fa-eye text-[11px] sm:text-xs"></i></button>
+              <button onclick="addToCart(${prod.id})" class="px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl bg-cyan-600 text-white font-bold text-[11px] sm:text-xs hover:bg-cyan-500 transition cursor-pointer card-3d"><i class="fa-solid fa-cart-plus"></i></button>
             </div>
           </div>
         </div>
