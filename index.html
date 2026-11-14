@@ -21,7 +21,6 @@
     h1, h2, h3, h4, .font-display {
         font-family: 'Space Grotesk', sans-serif;
     }
-    /* Fondo 3D Animado con Efectos Especiales Continuos */
     .bg-animation-container {
         position: fixed;
         inset: 0;
@@ -127,14 +126,12 @@
   </style>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-cyan-500 selection:text-white">
-
-  <!-- FONDO 3D ANIMADO CON EFECTOS ESPECIALES CONTINUOS -->
+  <!-- FONDO 3D ANIMADO -->
   <div class="bg-animation-container">
     <div class="floating-orb orb-1"></div>
     <div class="floating-orb orb-2"></div>
     <div class="floating-orb orb-3"></div>
   </div>
-
   <!-- ONBOARDING MODAL SLIDER -->
   <div id="onboarding-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xl transition-all duration-500 p-3 sm:p-4">
     <div class="relative w-full max-w-4xl mx-auto glass-card rounded-3xl p-5 sm:p-10 border border-cyan-500/40 shadow-2xl overflow-hidden bg-white/95">
@@ -146,7 +143,6 @@
           Omitir <i class="fa-solid fa-forward ml-1"></i>
         </button>
       </div>
-
       <div id="onboarding-slides" class="relative min-h-[380px] sm:min-h-[420px] flex items-center">
         <!-- Slide 1 -->
         <div class="onboarding-slide w-full transition-all duration-500 opacity-100 translate-x-0" data-index="0">
@@ -164,7 +160,7 @@
               </div>
             </div>
             <div class="relative flex justify-center">
-              <div class="w-56 sm:w-80 rounded-3xl overflow-hidden glass-card p-2 sm:p-3 card-3d animate-float border border-cyan-500/30">
+              <div class="w-56 sm:w-80 rounded-3xl overflow-hidden glass-card p-2 sm:p-3 card-3d animate-float border border-cyan-500/30 cursor-pointer" onclick="openProductModal(1)">
                 <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80" alt="Mochila Vintage" class="aspect-square-custom rounded-2xl">
               </div>
             </div>
@@ -182,7 +178,7 @@
               </div>
             </div>
             <div class="relative flex justify-center">
-              <div class="w-56 sm:w-80 rounded-3xl overflow-hidden glass-card p-2 sm:p-3 card-3d animate-float border border-indigo-500/30" style="animation-delay: 1s;">
+              <div class="w-56 sm:w-80 rounded-3xl overflow-hidden glass-card p-2 sm:p-3 card-3d animate-float border border-indigo-500/30 cursor-pointer" style="animation-delay: 1s;" onclick="openProductModal(2)">
                 <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80" alt="Personalización" class="aspect-square-custom rounded-2xl">
               </div>
             </div>
@@ -200,14 +196,13 @@
               </div>
             </div>
             <div class="relative flex justify-center">
-              <div class="w-56 sm:w-80 rounded-3xl overflow-hidden glass-card p-2 sm:p-3 card-3d animate-float border border-emerald-500/30" style="animation-delay: 2s;">
+              <div class="w-56 sm:w-80 rounded-3xl overflow-hidden glass-card p-2 sm:p-3 card-3d animate-float border border-emerald-500/30 cursor-pointer" style="animation-delay: 2s;" onclick="openProductModal(9)">
                 <img src="https://images.unsplash.com/photo-1513519245088-0c12902e5a38?auto=format&fit=crop&w=800&q=80" alt="Box Especial" class="aspect-square-custom rounded-2xl">
               </div>
             </div>
           </div>
         </div>
       </div>
-
       <div class="flex items-center justify-between mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-slate-200">
         <div class="flex items-center gap-2" id="onboarding-dots">
           <button onclick="goToSlide(0)" class="w-6 sm:w-8 h-2 rounded-full bg-cyan-500 transition-all cursor-pointer shadow-sm"></button>
@@ -225,7 +220,6 @@
       </div>
     </div>
   </div>
-
   <!-- HEADER & NAVIGATION -->
   <header class="sticky top-0 z-40 glass-nav transition-all duration-300">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
@@ -255,7 +249,6 @@
           <i class="fa-solid fa-circle text-xs text-purple-600"></i> Pin Personalizado
         </button>
       </nav>
-
       <div class="flex items-center gap-2 sm:gap-3">
         <button onclick="toggleCart()" class="relative p-2 sm:p-3 rounded-2xl glass-card hover:bg-slate-100 text-slate-700 hover:text-slate-900 transition flex items-center gap-1.5 sm:gap-2 border border-slate-300 shadow-md cursor-pointer card-3d">
           <i class="fa-solid fa-bag-shopping text-cyan-600 text-sm sm:text-base"></i>
@@ -267,7 +260,6 @@
         </button>
       </div>
     </div>
-
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden lg:hidden glass-card border-t border-slate-200 px-4 py-3 space-y-2 bg-white/98 shadow-xl">
       <button onclick="switchTab('inicio'); toggleMobileMenu();" class="w-full text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-cyan-700 bg-cyan-500/15 border border-cyan-500/30">Inicio</button>
@@ -278,11 +270,10 @@
       <button onclick="switchTab('pines'); toggleMobileMenu();" class="w-full text-left px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-slate-700 hover:bg-slate-100">Pin Personalizado</button>
     </div>
   </header>
-
   <!-- MAIN VIEWS -->
   <main class="flex-grow relative z-10">
     
-    <!-- 1. INICIO (Estructura lado a lado en Celular y Web) -->
+    <!-- 1. INICIO -->
     <section id="view-inicio" class="view-section py-6 sm:py-12 space-y-12 sm:space-y-16">
       <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div class="grid grid-cols-12 gap-3 sm:gap-8 items-center">
@@ -290,9 +281,9 @@
             <div class="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-cyan-500/10 to-indigo-500/10 rounded-3xl blur-2xl opacity-70"></div>
             <div class="relative glass-card rounded-2xl sm:rounded-3xl p-3 sm:p-8 card-3d border border-cyan-500/35 overflow-hidden bg-white/90">
               <div class="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 bg-gradient-to-r from-cyan-500 to-indigo-600 text-white text-[8px] sm:text-xs font-extrabold px-2 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full shadow-lg">Más Vendido</div>
-              <div class="relative w-full rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-6 group card-3d">
+              <div class="relative w-full rounded-xl sm:rounded-2xl overflow-hidden mb-3 sm:mb-6 group card-3d cursor-pointer" onclick="openProductModal(1)">
                 <img id="hero-img" src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80" alt="Morral Urbano" class="aspect-square-custom group-hover:scale-105 transition duration-500">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent flex items-end p-2.5 sm:p-6">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent flex items-end p-2.5 sm:p-6 pointer-events-none">
                   <div>
                     <span class="text-[8px] sm:text-xs font-bold text-cyan-200 uppercase tracking-widest bg-cyan-950/80 px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-md border border-cyan-500/30">Edición Limitada Lima</span>
                     <h3 class="text-xs sm:text-2xl font-bold font-display text-white mt-1 sm:mt-2 leading-tight">Morral Artesanal Urbano Lona & Cuero</h3>
@@ -346,7 +337,6 @@
           </div>
         </div>
       </div>
-
       <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
         <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 sm:gap-4">
           <div>
@@ -357,12 +347,10 @@
             Ver todo el catálogo <i class="fa-solid fa-arrow-right text-xs"></i>
           </button>
         </div>
-        <!-- 3 Columnas en celular y 3 en web para las novedades destacadas -->
         <div class="grid grid-cols-3 sm:grid-cols-3 gap-2 sm:gap-6" id="highlights-grid"></div>
       </div>
     </section>
-
-    <!-- 2. CATALOGO (3 columnas en celular y 5 en web) -->
+    <!-- 2. CATALOGO -->
     <section id="view-catalogo" class="view-section hidden py-6 sm:py-12 space-y-6 sm:space-y-8">
       <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
         <div class="space-y-3 sm:space-y-4">
@@ -383,7 +371,6 @@
         <div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-5" id="products-container"></div>
       </div>
     </section>
-
     <!-- 3. BOX ESPECIAL -->
     <section id="view-box" class="view-section hidden py-6 sm:py-12 space-y-6 sm:space-y-8">
       <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
@@ -411,13 +398,12 @@
               </div>
             </div>
             <div class="relative flex justify-center">
-              <div class="w-full max-w-sm sm:max-w-md rounded-3xl overflow-hidden glass-card p-2 sm:p-3 card-3d border-2 border-emerald-500/50 bg-white shadow-2xl">
+              <div class="w-full max-w-sm sm:max-w-md rounded-3xl overflow-hidden glass-card p-2 sm:p-3 card-3d border-2 border-emerald-500/50 bg-white shadow-2xl cursor-pointer" onclick="openProductModal(9)">
                 <img src="https://images.unsplash.com/photo-1513519245088-0c12902e5a38?auto=format&fit=crop&w=800&q=80" alt="Box" class="aspect-square-custom rounded-2xl">
               </div>
             </div>
           </div>
         </div>
-
         <div class="space-y-4 pt-2 sm:pt-4">
           <h3 class="text-xl sm:text-2xl font-bold font-display text-slate-900 flex items-center gap-2">
             <i class="fa-solid fa-boxes-stacked text-emerald-600"></i> Más Boxes de Temporada
@@ -426,7 +412,6 @@
         </div>
       </div>
     </section>
-
     <!-- 4. PREVENTA -->
     <section id="view-preventa" class="view-section hidden py-6 sm:py-12 space-y-6 sm:space-y-8">
       <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
@@ -454,13 +439,12 @@
               </div>
             </div>
             <div class="relative flex justify-center">
-              <div class="w-full max-w-sm sm:max-w-md rounded-3xl overflow-hidden glass-card p-2 sm:p-3 card-3d border-2 border-amber-500/50 bg-white shadow-2xl">
+              <div class="w-full max-w-sm sm:max-w-md rounded-3xl overflow-hidden glass-card p-2 sm:p-3 card-3d border-2 border-amber-500/50 bg-white shadow-2xl cursor-pointer" onclick="openProductModal(11)">
                 <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80" alt="Preventa" class="aspect-square-custom rounded-2xl">
               </div>
             </div>
           </div>
         </div>
-
         <div class="space-y-4 pt-2 sm:pt-4">
           <h3 class="text-xl sm:text-2xl font-bold font-display text-slate-900 flex items-center gap-2">
             <i class="fa-solid fa-fire text-amber-600"></i> Próximos Lanzamientos en Preventa
@@ -469,7 +453,6 @@
         </div>
       </div>
     </section>
-
     <!-- 5. PERSONALIZA TU MORRAL -->
     <section id="view-personalizador" class="view-section hidden py-6 sm:py-12 space-y-6 sm:space-y-8">
       <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
@@ -485,13 +468,11 @@
           </div>
           <span class="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-indigo-500/20 text-indigo-700 text-[11px] sm:text-xs font-bold border border-indigo-500/30 whitespace-nowrap">Cotización por WhatsApp</span>
         </div>
-
         <div class="text-center max-w-2xl mx-auto space-y-2">
           <span class="text-indigo-600 text-xs font-bold uppercase tracking-widest">Estudio de Diseño 3D & Personalización</span>
           <h2 class="text-2xl sm:text-4xl font-extrabold font-display text-slate-900">Personaliza tu Morral</h2>
           <p class="text-slate-600 text-xs sm:text-sm">Sube tu foto de referencia para visualizarla en el estudio y completa el formulario para recibir tu cotización exacta por WhatsApp.</p>
         </div>
-
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           <div class="lg:col-span-7 glass-card rounded-3xl p-5 sm:p-8 border border-indigo-500/35 lg:sticky lg:top-28 bg-white/95 space-y-5 sm:space-y-6 card-3d">
             <div class="flex items-center justify-between">
@@ -508,13 +489,11 @@
               </div>
               <img id="custom-uploaded-img" src="" alt="Vista previa" class="absolute inset-0 w-full h-full object-cover hidden">
             </div>
-
             <div class="space-y-2 sm:space-y-3">
               <label class="block text-xs font-semibold text-slate-700">Sube la foto frontal de referencia (Solo Vista Previa):</label>
               <input type="file" id="custom-morral-upload" accept="image/*" onchange="handleMorralUpload(event)" class="w-full text-xs text-slate-600 file:mr-3 sm:file:mr-4 file:py-2 file:px-3 sm:file:py-2.5 sm:file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-indigo-100 file:text-indigo-700 hover:file:bg-indigo-200 transition cursor-pointer">
             </div>
           </div>
-
           <div class="lg:col-span-5 glass-card rounded-3xl p-5 sm:p-8 border border-indigo-500/35 bg-white/95 shadow-lg space-y-5 sm:space-y-6 card-3d">
             <h3 class="text-base sm:text-lg font-bold font-display text-slate-900">Formulario de Cotización</h3>
             <form id="custom-morral-form" class="space-y-3.5 sm:space-y-4" onsubmit="event.preventDefault(); submitMorralWhatsApp();">
@@ -550,7 +529,6 @@
         </div>
       </div>
     </section>
-
     <!-- 6. PIN PERSONALIZADO -->
     <section id="view-pines" class="view-section hidden py-6 sm:py-12 space-y-6 sm:space-y-8">
       <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
@@ -566,13 +544,11 @@
           </div>
           <span class="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-purple-500/20 text-purple-700 text-[11px] sm:text-xs font-bold border border-purple-500/30 whitespace-nowrap">Escala Automática</span>
         </div>
-
         <div class="text-center max-w-2xl mx-auto space-y-2">
           <span class="text-purple-600 text-xs font-bold uppercase tracking-widest">Coleccionables y Anime</span>
           <h2 class="text-2xl sm:text-4xl font-extrabold font-display text-slate-900">Pin Personalizado (58mm)</h2>
           <p class="text-slate-600 text-xs sm:text-sm">Elige entre nuestros diseños o sube tus propias imágenes en alta definición.</p>
         </div>
-
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           <div class="lg:col-span-5 glass-card rounded-3xl p-5 sm:p-8 border border-purple-500/35 space-y-5 sm:space-y-6 lg:sticky lg:top-28 bg-white/95 card-3d">
             <div class="flex flex-col items-center justify-center space-y-3 sm:space-y-4">
@@ -587,7 +563,6 @@
                 <span id="pin-unit-price-label" class="text-purple-600 text-xs sm:text-sm font-semibold inline-block">Precio unitario: S/ 3.50</span>
               </div>
             </div>
-
             <div class="space-y-3.5 sm:space-y-4 pt-3 sm:pt-4 border-t border-slate-200">
               <div class="flex items-center justify-between">
                 <span class="text-xs sm:text-sm font-medium text-slate-700">Cantidad de Pines:</span>
@@ -606,7 +581,6 @@
               </button>
             </div>
           </div>
-
           <div class="lg:col-span-7 space-y-5 sm:space-y-6">
             <div class="glass-card rounded-3xl p-5 sm:p-6 border border-slate-200 space-y-3.5 sm:space-y-4 bg-white">
               <h3 class="text-xs sm:text-sm font-bold text-slate-900 flex items-center gap-2">
@@ -620,7 +594,6 @@
                 <span id="upload-filename-display" class="text-xs text-slate-500 italic">Sin archivos seleccionados</span>
               </div>
             </div>
-
             <div class="glass-card rounded-3xl p-5 sm:p-6 border border-slate-200 space-y-3.5 sm:space-y-4 bg-white">
               <div class="flex items-center justify-between">
                 <h3 class="text-xs sm:text-sm font-bold text-slate-900 flex items-center gap-2">
@@ -634,8 +607,7 @@
         </div>
       </div>
     </section>
-
-    <!-- 7. VISTA FINALIZAR COMPRA (Checkout Page) -->
+    <!-- 7. VISTA CHECKOUT -->
     <section id="view-checkout" class="view-section hidden py-6 sm:py-12 space-y-6 sm:space-y-8">
       <div class="max-w-4xl mx-auto px-3 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
         <div class="flex items-center justify-between">
@@ -646,9 +618,7 @@
             <h2 class="text-2xl sm:text-4xl font-extrabold font-display text-slate-900">Finalizar Compra</h2>
           </div>
         </div>
-
         <form id="checkout-form" class="space-y-6 sm:space-y-8" onsubmit="event.preventDefault(); confirmOrderWhatsApp();">
-          <!-- 1. Datos de contacto -->
           <div class="glass-card rounded-3xl p-5 sm:p-8 border border-slate-200 space-y-4 bg-white">
             <h3 class="text-base sm:text-lg font-bold font-display text-slate-900 flex items-center gap-2">
               <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-cyan-600 text-white flex items-center justify-center text-xs">1</span> Tus datos de contacto
@@ -664,13 +634,10 @@
               </div>
             </div>
           </div>
-
-          <!-- 2. Método de Envío -->
           <div class="glass-card rounded-3xl p-5 sm:p-8 border border-slate-200 space-y-5 sm:space-y-6 bg-white">
             <h3 class="text-base sm:text-lg font-bold font-display text-slate-900 flex items-center gap-2">
               <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-cyan-600 text-white flex items-center justify-center text-xs">2</span> Método de Envío
             </h3>
-            
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
               <div onclick="setShippingType('domicilio')" id="ship-card-domicilio" class="ship-card border-2 border-cyan-500 bg-cyan-50 rounded-2xl p-3.5 sm:p-4 cursor-pointer text-center space-y-1.5 sm:space-y-2 transition card-3d">
                 <i class="fa-solid fa-house text-lg sm:text-xl text-cyan-600"></i>
@@ -688,11 +655,8 @@
                 <span class="text-[11px] sm:text-xs text-slate-500 block">S/ 18.00</span>
               </div>
             </div>
-            
             <div id="shipping-details-container" class="space-y-3.5 sm:space-y-4 pt-3.5 sm:pt-4 border-t border-slate-200"></div>
           </div>
-
-          <!-- 3. Método de Pago -->
           <div class="glass-card rounded-3xl p-5 sm:p-8 border border-slate-200 space-y-4 bg-white">
             <h3 class="text-base sm:text-lg font-bold font-display text-slate-900 flex items-center gap-2">
               <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-cyan-600 text-white flex items-center justify-center text-xs">3</span> Método de Pago
@@ -714,8 +678,6 @@
               </label>
             </div>
           </div>
-
-          <!-- Resumen del Pedido & Confirmación -->
           <div class="glass-card rounded-3xl p-5 sm:p-8 border border-slate-200 bg-white text-slate-900 space-y-5 sm:space-y-6 shadow-2xl card-3d">
             <h3 class="text-lg sm:text-xl font-bold font-display">Resumen del Pedido</h3>
             <div id="checkout-items-summary" class="space-y-3 text-xs sm:text-sm divide-y divide-slate-200"></div>
@@ -778,8 +740,6 @@
   <!-- PRODUCT DETAIL MODAL -->
   <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-2xl hidden p-2 sm:p-4 overflow-y-auto" onclick="handleModalBackdropClick(event)">
     <div class="relative w-full max-w-4xl bg-white text-slate-900 rounded-3xl border border-cyan-500/50 shadow-2xl overflow-hidden my-auto max-h-[95vh] sm:max-h-[92vh] flex flex-col card-3d" onclick="event.stopPropagation()">
-      
-      <!-- Sticky Top Header Bar -->
       <div class="sticky top-0 z-30 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-3 bg-white/98 backdrop-blur-md p-3 sm:px-6 border-b border-cyan-500/30 shadow-xl">
         <div class="flex items-center gap-1.5 sm:gap-2 bg-slate-100 p-1 rounded-xl sm:rounded-2xl border border-cyan-500/20 w-full sm:w-auto justify-center shadow-inner">
           <button onclick="setModalTab('galeria')" id="modal-tab-galeria" class="px-3.5 py-2 sm:px-4.5 sm:py-2.5 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-cyan-500 to-indigo-600 text-white transition-all flex items-center gap-1.5 sm:gap-2 shadow-lg cursor-pointer card-3d">
@@ -793,11 +753,7 @@
           <i class="fa-solid fa-xmark text-sm sm:text-base"></i> Cerrar Ventana
         </button>
       </div>
-
-      <!-- Scrollable Modal Body -->
       <div class="flex-1 overflow-y-auto p-4 sm:p-8 space-y-5 sm:space-y-6">
-        
-        <!-- TAB CONTENT 1: GALERÍA DE MODELOS -->
         <div id="modal-content-galeria" class="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 items-start">
           <div class="md:col-span-5 space-y-3 sm:space-y-4">
             <div class="relative w-full aspect-square-custom rounded-2xl overflow-hidden bg-slate-100 border border-cyan-500/30 flex items-center justify-center shadow-inner group card-3d">
@@ -808,7 +764,6 @@
             </div>
             <p class="text-[11px] sm:text-xs text-slate-600 text-center font-medium bg-slate-50 p-2 sm:p-2.5 rounded-xl border border-slate-200"><i class="fa-solid fa-circle-info text-cyan-600 mr-1"></i> Selecciona los diseños y tallas abajo para ver cómo se adaptan.</p>
           </div>
-
           <div class="md:col-span-7 space-y-4 sm:space-y-5">
             <div class="space-y-2">
               <div class="flex items-center justify-between">
@@ -824,25 +779,18 @@
                 <span class="text-[10px] sm:text-xs font-bold text-emerald-700 bg-emerald-500/15 border border-emerald-500/30 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg">Stock Disponible</span>
               </div>
             </div>
-
             <div class="space-y-2 text-slate-700 text-xs sm:text-sm leading-relaxed bg-slate-50 p-3.5 sm:p-4 rounded-2xl border border-slate-200 shadow-sm">
               <p id="modal-desc">Morral de lona canvas de alta resistencia con 4 diseños bordados únicos y acabados cyberpunk.</p>
               <div id="modal-bullets" class="space-y-1.5 pt-2 border-t border-slate-200 text-xs text-slate-600 font-medium"></div>
             </div>
-
-            <!-- Variants -->
             <div id="modal-variants-section" class="space-y-2.5 hidden">
               <label class="block text-xs font-extrabold text-cyan-700 uppercase tracking-wider">1. Selecciona el diseño o variante:</label>
               <div class="grid grid-cols-3 gap-2 sm:gap-2.5" id="modal-variants-grid"></div>
             </div>
-
-            <!-- Sizes -->
             <div id="modal-sizes-section" class="space-y-2.5 hidden">
               <label class="block text-xs font-extrabold text-cyan-700 uppercase tracking-wider" id="modal-sizes-label">2. Selecciona tamaño exacto:</label>
               <div class="grid grid-cols-3 gap-2 sm:gap-2.5" id="modal-sizes-grid"></div>
             </div>
-
-            <!-- Stepper Qty & Add Button -->
             <div class="flex items-center gap-2.5 sm:gap-3 pt-2 sm:pt-3">
               <div class="flex items-center bg-slate-100 border border-slate-300 rounded-2xl p-1 justify-between shadow-inner shrink-0">
                 <button onclick="updateModalQty(-1)" class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white text-slate-800 font-bold hover:bg-slate-200 transition flex items-center justify-center border border-slate-300 text-xs sm:text-sm cursor-pointer card-3d">-</button>
@@ -855,8 +803,6 @@
             </div>
           </div>
         </div>
-
-        <!-- TAB CONTENT 2: LOOKBOOK / EN ACCIÓN -->
         <div id="modal-content-lookbook" class="hidden space-y-4">
           <div class="text-center max-w-lg mx-auto space-y-1">
             <h3 class="text-lg sm:text-xl font-bold font-display text-slate-900">Forma de Uso & Outfits (Lookbook)</h3>
@@ -864,8 +810,6 @@
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4" id="modal-lookbook-grid"></div>
         </div>
-
-        <!-- RECOMENDACIÓN DE ACCESORIOS -->
         <div class="pt-5 sm:pt-6 border-t border-slate-200 space-y-3 sm:space-y-4">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
@@ -875,7 +819,6 @@
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 sm:gap-3" id="modal-accessories-grid"></div>
         </div>
-
       </div>
     </div>
   </div>
@@ -896,43 +839,126 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer class="glass-card border-t border-slate-200 py-8 sm:py-12 mt-12 sm:mt-16 bg-white/90 text-slate-600 relative z-10">
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-6 sm:gap-8">
-      <div class="space-y-3 sm:space-y-4">
-        <div class="flex items-center gap-2.5">
-          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center text-white font-extrabold card-3d text-sm">MV</div>
-          <span class="font-display text-sm sm:text-base font-bold text-slate-900 tracking-wider">MILENIO VINTAGE</span>
-        </div>
-        <p class="text-slate-500 text-xs">Tienda de marroquinería y streetwear en Lima, Perú. Envíos rápidos a domicilio y a todo el Perú.</p>
+  <!-- POLICY MODALS (Privacy, Shipping, Returns, Claims Book) -->
+  <div id="policy-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-md hidden p-4">
+    <div class="glass-card rounded-3xl max-w-2xl w-full p-6 sm:p-8 border border-slate-300 relative space-y-4 shadow-2xl bg-white text-slate-900 max-h-[90vh] overflow-y-auto card-3d">
+      <button onclick="closePolicyModal()" class="absolute top-4 right-4 text-slate-500 hover:text-slate-900 p-2 cursor-pointer">
+        <i class="fa-solid fa-xmark text-xl"></i>
+      </button>
+      <h3 id="policy-modal-title" class="text-xl font-bold font-display text-slate-900">Título de la Política</h3>
+      <div id="policy-modal-body" class="text-xs sm:text-sm text-slate-600 space-y-3 leading-relaxed">
+        <!-- Content loaded dynamically -->
       </div>
-      <div>
-        <h4 class="font-bold text-slate-900 text-xs sm:text-sm font-display mb-3 sm:mb-4">Secciones</h4>
-        <ul class="space-y-1.5 sm:space-y-2 text-xs text-slate-500">
-          <li><button onclick="switchTab('catalogo'); filterCatalog('morrales')" class="hover:text-cyan-600 cursor-pointer">Morrales</button></li>
-          <li><button onclick="switchTab('catalogo'); filterCatalog('mochilas')" class="hover:text-cyan-600 cursor-pointer">Mochilas</button></li>
-          <li><button onclick="switchTab('catalogo'); filterCatalog('bolsos')" class="hover:text-cyan-600 cursor-pointer">Bolsos y Carteras</button></li>
-          <li><button onclick="switchTab('catalogo'); filterCatalog('accesorios')" class="hover:text-cyan-600 cursor-pointer">Accesorios</button></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-bold text-slate-900 text-xs sm:text-sm font-display mb-3 sm:mb-4">Experiencias</h4>
-        <ul class="space-y-1.5 sm:space-y-2 text-xs text-slate-500">
-          <li><button onclick="switchTab('box')" class="hover:text-emerald-600 font-bold cursor-pointer">Box Especial</button></li>
-          <li><button onclick="switchTab('preventa')" class="hover:text-amber-600 font-bold cursor-pointer">Preventa Exclusiva</button></li>
-          <li><button onclick="switchTab('personalizador')" class="hover:text-cyan-600 cursor-pointer">Personaliza tu Morral</button></li>
-          <li><button onclick="switchTab('pines')" class="hover:text-cyan-600 cursor-pointer">Pin Personalizado</button></li>
-        </ul>
-      </div>
-      <div class="space-y-3 sm:space-y-4">
-        <h4 class="font-bold text-slate-900 text-xs sm:text-sm font-display">WhatsApp Oficial</h4>
-        <a href="https://wa.me/51926412894" target="_blank" class="inline-flex items-center gap-2 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-300 text-xs font-semibold hover:bg-emerald-100 transition card-3d">
-          <i class="fa-brands fa-whatsapp text-sm sm:text-base"></i> +51 926 412 894
-        </a>
+      <div class="pt-4 border-t border-slate-200 text-right">
+        <button onclick="closePolicyModal()" class="px-5 py-2.5 rounded-xl bg-slate-900 text-white font-bold text-xs sm:text-sm hover:bg-slate-800 transition cursor-pointer">
+          Entendido
+        </button>
       </div>
     </div>
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 mt-8 sm:mt-12 pt-4 sm:pt-6 border-t border-slate-200 text-center text-[11px] sm:text-xs text-slate-400">
-      &copy; 2026 Milenio Vintage. Todos los derechos reservados. Lima, Perú.
+  </div>
+
+  <!-- CLAIMS BOOK MODAL (Libro de Reclamaciones - Law No. 29571) -->
+  <div id="claims-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-md hidden p-4">
+    <div class="glass-card rounded-3xl max-w-2xl w-full p-6 sm:p-8 border border-blue-500/40 relative space-y-5 shadow-2xl bg-white text-slate-900 max-h-[90vh] overflow-y-auto card-3d">
+      <button onclick="closeClaimsModal()" class="absolute top-4 right-4 text-slate-500 hover:text-slate-900 p-2 cursor-pointer">
+        <i class="fa-solid fa-xmark text-xl"></i>
+      </button>
+      <div class="flex items-center gap-3 border-b border-slate-200 pb-4">
+        <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-xl shadow-md">
+          <i class="fa-solid fa-book-open"></i>
+        </div>
+        <div>
+          <h3 class="text-lg sm:text-xl font-bold font-display text-slate-900">Libro de Reclamaciones Virtual</h3>
+          <p class="text-xs text-slate-500">Conforme a la Ley N° 29571 - Código de Protección y Defensa del Consumidor</p>
+        </div>
+      </div>
+      <form id="claims-form" onsubmit="event.preventDefault(); submitClaimWhatsApp();" class="space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Nombre y Apellidos <span class="text-red-500">*</span></label>
+            <input type="text" id="claim-nombre" placeholder="Nombre completo" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">DNI / CE <span class="text-red-500">*</span></label>
+            <input type="text" id="claim-dni" placeholder="Número de documento" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-500">
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Teléfono / WhatsApp <span class="text-red-500">*</span></label>
+            <input type="tel" id="claim-tel" placeholder="Ej. 987 654 321" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Correo Electrónico <span class="text-red-500">*</span></label>
+            <input type="email" id="claim-email" placeholder="correo@dominio.com" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-500">
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Tipo de Reclamo <span class="text-red-500">*</span></label>
+            <select id="claim-tipo" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-500">
+              <option value="Reclamo (Disconformidad relacionada a los productos o servicios)">Reclamo (Disconformidad con producto/servicio)</option>
+              <option value="Queja (Malestar respecto a la atención al público)">Queja (Malestar respecto a la atención)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Nro de Pedido / Comprobante</label>
+            <input type="text" id="claim-pedido" placeholder="Ej. Pedido #1042 o N/A" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-500">
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Detalle del Reclamo o Queja <span class="text-red-500">*</span></label>
+          <textarea id="claim-detalle" rows="4" placeholder="Describa los hechos detalladamente..." required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-blue-500 resize-none"></textarea>
+        </div>
+        <p class="text-[11px] text-slate-500">La formulación del reclamo no impide acudir a otras vías de solución de controversias ni es requisito previo para interponer una denuncia ante INDECOPI. Respuesta en un plazo máximo de 2 días hábiles vía WhatsApp.</p>
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-blue-600 text-white font-bold text-xs sm:text-sm hover:bg-blue-500 transition shadow-lg flex items-center justify-center gap-2 cursor-pointer">
+          <i class="fa-solid fa-paper-plane">></i> Enviar Reclamo por WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0b0f19] text-slate-300 py-10 sm:py-14 mt-12 sm:mt-16 border-t border-slate-800 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+      <!-- Left Info -->
+      <div class="md:col-span-5 space-y-4">
+        <h3 class="font-display font-extrabold text-white text-lg tracking-wider">MILENIO VINTAGE</h3>
+        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-md">
+          Morrales, mochilas y accesorios con alma vintage y diseño independiente de alta calidad.
+        </p>
+        <div class="space-y-1.5 text-xs text-slate-400 pt-2">
+          <p><strong class="text-white">Lun a Dom</strong> | 9am - 11pm</p>
+          <p><strong class="text-white">WhatsApp:</strong> +51 926 412 894</p>
+        </div>
+      </div>
+      <!-- Middle Policies Links -->
+      <div class="md:col-span-4 space-y-3">
+        <h4 class="font-display font-bold text-white text-xs sm:text-sm uppercase tracking-wider">Políticas de la tienda</h4>
+        <ul class="space-y-2 text-xs sm:text-sm text-slate-400">
+          <li><button onclick="openPolicy('privacy')" class="hover:text-cyan-400 transition flex items-center gap-1.5 cursor-pointer"><i class="fa-solid fa-chevron-right text-[10px] text-cyan-500"></i> Políticas de privacidad</button></li>
+          <li><button onclick="openPolicy('shipping')" class="hover:text-cyan-400 transition flex items-center gap-1.5 cursor-pointer"><i class="fa-solid fa-chevron-right text-[10px] text-cyan-500"></i> Políticas de envío</button></li>
+          <li><button onclick="openPolicy('returns')" class="hover:text-cyan-400 transition flex items-center gap-1.5 cursor-pointer"><i class="fa-solid fa-chevron-right text-[10px] text-cyan-500"></i> Políticas de cambios y devoluciones</button></li>
+        </ul>
+      </div>
+      <!-- Right Logo & Claims Book -->
+      <div class="md:col-span-3 flex flex-col items-start md:items-end space-y-4">
+        <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-slate-700 bg-slate-900 flex items-center justify-center shadow-lg card-3d">
+          <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=200&q=80" alt="Milenio Vintage" class="aspect-square-custom rounded-full">
+        </div>
+        <button onclick="openClaimsModal()" class="bg-white text-slate-900 hover:bg-slate-100 font-bold px-4 py-3 rounded-2xl shadow-xl transition flex items-center gap-3 text-xs sm:text-sm cursor-pointer card-3d border border-slate-200">
+          <div class="w-7 h-7 rounded-xl bg-blue-600 text-white flex items-center justify-center text-xs shadow-md">
+            <i class="fa-solid fa-book"></i>
+          </div>
+          <div class="text-left leading-tight">
+            <span class="block font-extrabold text-[10px] text-slate-500 uppercase tracking-wider">LIBRO DE</span>
+            <span class="block font-bold text-slate-900">Reclamaciones</span>
+          </div>
+        </button>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 pt-6 border-t border-slate-800/80 text-center text-xs text-slate-500">
+      &copy; 2026 Milenio Vintage. Todos los derechos reservados.
     </div>
   </footer>
 
@@ -1197,7 +1223,6 @@
       "Miguel Grau", "Cultura", "San Borja Sur", "Angamos", "Cabitos", "Ayacucho", 
       "San Juan", "Atocongo", "Jabalí", "Pumacahua", "Villa María", "Parque Industrial", "Villa El Salvador"
     ];
-
     const estacionesMetropolitano = [
       "Naranjal", "Izaguirre", "Palmeras", "Los Alisos", "Dominicos", "Universitaria", 
       "Tomás Valle", "El Milagro", "Honduras", "Caquetá", "Dos de Mayo", "Central", 
@@ -1209,12 +1234,80 @@
       if (event.key === 'Escape') {
         closeProductModal();
         closePinZoomModal();
+        closePolicyModal();
+        closeClaimsModal();
         const cartDrawer = document.getElementById('cart-drawer');
         if (cartDrawer && !cartDrawer.classList.contains('hidden')) {
           toggleCart();
         }
       }
     });
+
+    const policyData = {
+      privacy: {
+        title: "Políticas de Privacidad",
+        content: `
+          <p>En <strong>Milenio Vintage</strong> (marca Dusk), protegemos estrictamente sus datos personales conforme a la Ley N° 29733 de Protección de Datos Personales.</p>
+          <p><strong>1. Información recopilada:</strong> Recopilamos nombre, número de teléfono, dirección de envío y correo electrónico únicamente con el propósito de procesar y despachar sus pedidos.</p>
+          <p><strong>2. Uso y confidencialidad:</strong> Sus datos son compartidos únicamente con nuestros operadores logísticos autorizados (Olva Courier, Shalom, Marvisur) para garantizar la entrega puntual.</p>
+          <p><strong>3. Seguridad:</strong> Implementamos medidas técnicas para resguardar su información frente a accesos no autorizados.</p>
+        `
+      },
+      shipping: {
+        title: "Políticas de Envío",
+        content: `
+          <p><strong>1. Tiempos de entrega:</strong> En Lima Metropolitana, los envíos a domicilio o estaciones de Lima Metro / Metropolitano se realizan en un plazo de 2 a 4 días hábiles tras la confirmación del pago.</p>
+          <p><strong>2. Envíos a Provincia:</strong> Se despachan a través de agencias de confianza (Shalom, Olva Courier, Marvisur, Civa) con guía de seguimiento facilitada vía WhatsApp.</p>
+          <p><strong>3. Costos:</strong> Los costos varían según el destino y el método seleccionado al finalizar la compra.</p>
+        `
+      },
+      returns: {
+        title: "Políticas de Cambios y Devoluciones",
+        content: `
+          <p><strong>1. Plazo y condiciones:</strong> No realizamos devoluciones en dinero. Se aceptan cambios dentro de los <strong>24 horas</strong> posteriores a la recepción únicamente por errores en el pedido o defectos de fabricación demostrables con foto o video.</p>
+          <p><strong>2. Estado del producto:</strong> El artículo debe conservar sus etiquetas originales, embalaje y sin uso previo.</p>
+        `
+      }
+    };
+
+    function openPolicy(type) {
+      const policy = policyData[type];
+      if (!policy) return;
+      document.getElementById('policy-modal-title').textContent = policy.title;
+      document.getElementById('policy-modal-body').innerHTML = policy.content;
+      document.getElementById('policy-modal').classList.remove('hidden');
+    }
+    function closePolicyModal() {
+      document.getElementById('policy-modal').classList.add('hidden');
+    }
+    function openClaimsModal() {
+      document.getElementById('claims-modal').classList.remove('hidden');
+    }
+    function closeClaimsModal() {
+      document.getElementById('claims-modal').classList.add('hidden');
+    }
+    function submitClaimWhatsApp() {
+      const nombre = document.getElementById('claim-nombre').value;
+      const dni = document.getElementById('claim-dni').value;
+      const tel = document.getElementById('claim-tel').value;
+      const email = document.getElementById('claim-email').value;
+      const tipo = document.getElementById('claim-tipo').value;
+      const pedido = document.getElementById('claim-pedido').value || 'N/A';
+      const detalle = document.getElementById('claim-detalle').value;
+
+      let msg = `[LIBRO DE RECLAMACIONES VIRTUAL - LEY N° 29571]\n\n`;
+      msg += `*Nombre:* ${nombre}\n`;
+      msg += `*DNI/CE:* ${dni}\n`;
+      msg += `*Teléfono:* ${tel}\n`;
+      msg += `*Correo:* ${email}\n`;
+      msg += `*Tipo:* ${tipo}\n`;
+      msg += `*Pedido:* ${pedido}\n`;
+      msg += `*Detalle:* ${detalle}\n\n`;
+      msg += `Solicito atención y respuesta en el plazo legal establecido (2 días hábiles).`;
+
+      window.open(`https://wa.me/51926412894?text=${encodeURIComponent(msg)}`, '_blank');
+      closeClaimsModal();
+    }
 
     function goToSlide(idx) {
       currentSlideIdx = idx;
@@ -1244,22 +1337,18 @@
       if (idx === 2) nextBtn.innerHTML = '¡Empezar! <i class="fa-solid fa-check ml-1"></i>';
       else nextBtn.innerHTML = 'Siguiente <i class="fa-solid fa-arrow-right ml-1"></i>';
     }
-
     function nextSlide() {
       if (currentSlideIdx < 2) goToSlide(currentSlideIdx + 1);
       else closeOnboarding();
     }
-
     function prevSlide() {
       if (currentSlideIdx > 0) goToSlide(currentSlideIdx - 1);
     }
-
     function closeOnboarding() {
       const modal = document.getElementById('onboarding-modal');
       modal.classList.add('opacity-0', 'scale-95');
       setTimeout(() => modal.remove(), 400);
     }
-
     function switchTab(tabId) {
       document.querySelectorAll('.view-section').forEach(sec => sec.classList.add('hidden'));
       const target = document.getElementById('view-' + tabId);
@@ -1280,16 +1369,14 @@
       });
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-
     function toggleMobileMenu() {
       document.getElementById('mobile-menu').classList.toggle('hidden');
     }
-
     function renderApp() {
       const highlightSections = [
-        { sec: 'morrales', title: 'Morrales Artesanales', color: 'border-cyan-500/40 bg-gradient-to-br from-cyan-50 to-white', badgeColor: 'bg-cyan-500/20 text-cyan-700' },
-        { sec: 'mochilas', title: 'Mochilas Urbanas', color: 'border-blue-500/40 bg-gradient-to-br from-blue-50 to-white', badgeColor: 'bg-blue-500/20 text-blue-700' },
-        { sec: 'bolsos', title: 'Bolsos y Carteras', color: 'border-purple-500/40 bg-gradient-to-br from-purple-50 to-white', badgeColor: 'bg-purple-500/20 text-purple-700' }
+        { sec: 'morrales', title: 'Morrales Artesanales', color: 'border-cyan-500/40 bg-gradient-to-br from-cyan-50 to-white' },
+        { sec: 'mochilas', title: 'Mochilas Urbanas', color: 'border-blue-500/40 bg-gradient-to-br from-blue-50 to-white' },
+        { sec: 'bolsos', title: 'Bolsos y Carteras', color: 'border-purple-500/40 bg-gradient-to-br from-purple-50 to-white' }
       ];
       
       document.getElementById('highlights-grid').innerHTML = highlightSections.map(item => {
@@ -1299,9 +1386,9 @@
           <div class="glass-card rounded-2xl sm:rounded-3xl p-2 sm:p-6 border ${item.color} card-3d flex flex-col justify-between space-y-2 sm:space-y-4 bg-white/90">
             <div class="space-y-1.5 sm:space-y-3">
               <div class="flex items-center justify-between">
-                <span class="px-1.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] sm:text-xs font-bold ${item.badgeColor} truncate">${item.title}</span>
+                <span class="px-1.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[8px] sm:text-xs font-bold bg-slate-100 text-slate-700 truncate">${item.title}</span>
               </div>
-              <div class="w-full rounded-xl sm:rounded-2xl overflow-hidden glass-card p-1 sm:p-2 border border-slate-200 bg-slate-50 card-3d">
+              <div onclick="openProductModal(${prod.id})" class="w-full rounded-xl sm:rounded-2xl overflow-hidden glass-card p-1 sm:p-2 border border-slate-200 bg-slate-50 card-3d cursor-pointer">
                 <img src="${prod.img}" alt="${prod.name}" class="aspect-square-custom rounded-lg sm:rounded-xl hover:scale-105 transition duration-300">
               </div>
               <h3 class="text-[11px] sm:text-lg font-bold font-display text-slate-900 line-clamp-1">${prod.name}</h3>
@@ -1323,7 +1410,6 @@
       renderPinsGrid();
       updatePinPricingUI();
     }
-
     function renderCatalogGrid(list) {
       document.getElementById('products-container').innerHTML = list.map(prod => `
         <div class="glass-card rounded-2xl p-2 sm:p-4 border border-slate-200 card-3d flex flex-col justify-between space-y-2 sm:space-y-3 bg-white/90">
@@ -1331,7 +1417,7 @@
             <div class="flex items-center justify-between">
               <span class="px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[8px] sm:text-[10px] font-bold uppercase tracking-wider ${prod.tagColor}">${prod.badge}</span>
             </div>
-            <div class="w-full rounded-xl overflow-hidden glass-card p-1 border border-slate-200 bg-slate-50 card-3d">
+            <div onclick="openProductModal(${prod.id})" class="w-full rounded-xl overflow-hidden glass-card p-1 border border-slate-200 bg-slate-50 card-3d cursor-pointer">
               <img src="${prod.img}" alt="${prod.name}" class="aspect-square-custom rounded-lg hover:scale-105 transition duration-300">
             </div>
             <h3 class="text-[11px] sm:text-base font-bold font-display text-slate-900 line-clamp-1">${prod.name}</h3>
@@ -1347,7 +1433,6 @@
         </div>
       `).join('');
     }
-
     function filterCatalog(category) {
       document.querySelectorAll('.cat-tab').forEach(btn => {
         const isBox = btn.textContent.includes('Box Especial');
@@ -1366,12 +1451,11 @@
       if (category === 'todos') renderCatalogGrid(products);
       else renderCatalogGrid(products.filter(p => p.category === category));
     }
-
     function renderSpecialSubSections() {
       document.getElementById('box-container').innerHTML = products.filter(p => p.category === 'box').map(prod => `
         <div class="glass-card rounded-3xl p-4 sm:p-5 border-2 border-emerald-500/40 card-3d flex flex-col justify-between space-y-3 sm:space-y-4 bg-white/90 hover:border-emerald-500 transition shadow-lg">
           <div class="space-y-2.5 sm:space-y-3">
-            <div class="w-full rounded-2xl overflow-hidden glass-card p-1.5 sm:p-2 border border-emerald-200 bg-emerald-50/50 card-3d">
+            <div onclick="openProductModal(${prod.id})" class="w-full rounded-2xl overflow-hidden glass-card p-1.5 sm:p-2 border border-emerald-200 bg-emerald-50/50 card-3d cursor-pointer">
               <img src="${prod.img}" alt="${prod.name}" class="aspect-square-custom rounded-xl">
             </div>
             <h3 class="text-sm sm:text-base font-bold font-display text-slate-900">${prod.name}</h3>
@@ -1383,11 +1467,10 @@
           </div>
         </div>
       `).join('');
-
       document.getElementById('preventa-container').innerHTML = products.filter(p => p.category === 'preventa').map(prod => `
         <div class="glass-card rounded-3xl p-4 sm:p-5 border-2 border-amber-500/40 card-3d flex flex-col justify-between space-y-3 sm:space-y-4 bg-white/90 hover:border-amber-500 transition shadow-lg">
           <div class="space-y-2.5 sm:space-y-3">
-            <div class="w-full rounded-2xl overflow-hidden glass-card p-1.5 sm:p-2 border border-amber-200 bg-amber-50/50 card-3d">
+            <div onclick="openProductModal(${prod.id})" class="w-full rounded-2xl overflow-hidden glass-card p-1.5 sm:p-2 border border-amber-200 bg-amber-50/50 card-3d cursor-pointer">
               <img src="${prod.img}" alt="${prod.name}" class="aspect-square-custom rounded-xl">
             </div>
             <h3 class="text-sm sm:text-base font-bold font-display text-slate-900">${prod.name}</h3>
@@ -1400,10 +1483,9 @@
         </div>
       `).join('');
     }
-
     function renderPinsGrid() {
       document.getElementById('pins-preset-grid').innerHTML = presetPins.map(pin => `
-        <div onclick="openPinZoom('${pin.title}', '${pin.img}')" class="glass-card rounded-2xl p-2.5 sm:p-3 border border-slate-200 hover:border-purple-500 transition cursor-pointer flex flex-col items-center space-y-2 group bg-white card-3d">
+        <div onclick="openPinZoom('${pin.title}','${pin.img}')" class="glass-card rounded-2xl p-2.5 sm:p-3 border border-slate-200 hover:border-purple-500 transition cursor-pointer flex flex-col items-center space-y-2 group bg-white card-3d">
           <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border border-purple-500/40 group-hover:scale-105 transition flex items-center justify-center bg-slate-950 card-3d">
             <img src="${pin.img}" alt="${pin.title}" class="aspect-square-custom rounded-full">
           </div>
@@ -1411,7 +1493,6 @@
         </div>
       `).join('');
     }
-
     let zoomPinData = { title: "", img: "" };
     function openPinZoom(title, imgUrl) {
       zoomPinData = { title, img: imgUrl };
@@ -1419,11 +1500,9 @@
       document.getElementById('zoom-pin-img').src = imgUrl;
       document.getElementById('pin-zoom-modal').classList.remove('hidden');
     }
-
     function closePinZoomModal() {
       document.getElementById('pin-zoom-modal').classList.add('hidden');
     }
-
     function applyZoomPin() {
       pinConfig.title = zoomPinData.title;
       pinConfig.img = zoomPinData.img;
@@ -1431,13 +1510,11 @@
       document.getElementById('pin-title-display').textContent = zoomPinData.title;
       closePinZoomModal();
     }
-
     function setModalTab(tabName) {
       const tabGaleria = document.getElementById('modal-content-galeria');
       const tabLookbook = document.getElementById('modal-content-lookbook');
       const btnGaleria = document.getElementById('modal-tab-galeria');
       const btnLookbook = document.getElementById('modal-tab-lookbook');
-
       if (tabName === 'galeria') {
         tabGaleria.classList.remove('hidden');
         tabLookbook.classList.add('hidden');
@@ -1450,23 +1527,19 @@
         btnGaleria.className = "px-3.5 py-2 sm:px-4.5 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 hover:bg-slate-200 transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer card-3d";
       }
     }
-
     function addHeroToCart() { addToCart(products[0].id); }
     function addSpecialBox() { const box = products.find(p => p.category === 'box'); if (box) addToCart(box.id); }
     function addPreventaItem() { const prev = products.find(p => p.category === 'preventa'); if (prev) addToCart(prev.id); }
-
     function openProductModal(id) {
       selectedModalProduct = products.find(p => p.id === id) || products[0];
       currentModalQty = 1;
       currentModalPrice = selectedModalProduct.price;
-
       document.getElementById('modal-name').textContent = selectedModalProduct.name;
       document.getElementById('modal-desc').textContent = selectedModalProduct.desc;
       document.getElementById('modal-category').textContent = selectedModalProduct.category.toUpperCase();
       document.getElementById('modal-rating').textContent = selectedModalProduct.rating || "5.0 (420 valoraciones)";
       document.getElementById('modal-price').textContent = `S/ ${selectedModalProduct.price.toFixed(2)}`;
       document.getElementById('modal-old-price').textContent = `S/ ${(selectedModalProduct.oldPrice || selectedModalProduct.price * 1.35).toFixed(2)}`;
-
       const bulletsContainer = document.getElementById('modal-bullets');
       if (selectedModalProduct.bullets && selectedModalProduct.bullets.length > 0) {
         bulletsContainer.innerHTML = selectedModalProduct.bullets.map(b => `<div class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-600"></i><span>${b}</span></div>`).join('');
@@ -1474,8 +1547,6 @@
       } else {
         bulletsContainer.classList.add('hidden');
       }
-
-      // VARIANTS
       const variantsSection = document.getElementById('modal-variants-section');
       const variantsGrid = document.getElementById('modal-variants-grid');
       if (selectedModalProduct.variants && selectedModalProduct.variants.length > 0) {
@@ -1501,8 +1572,6 @@
         document.getElementById('modal-main-img').src = selectedModalProduct.img;
         document.getElementById('modal-variant-badge-text').textContent = `Modelo: Alpha`;
       }
-
-      // SIZES
       const sizesSection = document.getElementById('modal-sizes-section');
       const sizesGrid = document.getElementById('modal-sizes-grid');
       if (selectedModalProduct.category === 'morrales' || selectedModalProduct.category === 'mochilas' || selectedModalProduct.category === 'bolsos') {
@@ -1528,7 +1597,6 @@
         sizesSection.classList.add('hidden');
         currentSelectedSize = 'única';
       }
-
       const lookbookGrid = document.getElementById('modal-lookbook-grid');
       const lbImages = selectedModalProduct.lookbookImages && selectedModalProduct.lookbookImages.length > 0 ? selectedModalProduct.lookbookImages : [selectedModalProduct.img];
       lookbookGrid.innerHTML = lbImages.map(imgUrl => `
@@ -1536,8 +1604,6 @@
           <img src="${imgUrl}" alt="Lookbook y Outfits" class="aspect-square-custom rounded-2xl object-cover">
         </div>
       `).join('');
-
-      // ACCESORIOS RECOMENDADOS EN MODAL
       const accessoriesGrid = document.getElementById('modal-accessories-grid');
       const recs = [
         { name: 'Morral Cosmic', price: 89.00, img: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=200&q=80', badge: 'Classic' },
@@ -1559,12 +1625,10 @@
           </button>
         </div>
       `).join('');
-
       setModalTab('galeria');
       updateModalTotalButton();
       document.getElementById('product-modal').classList.remove('hidden');
     }
-
     function selectModalVariant(idx) {
       const variants = selectedModalProduct.variants || [];
       currentSelectedVariant = variants[idx];
@@ -1583,7 +1647,6 @@
       });
       updateModalTotalButton();
     }
-
     function selectModalSize(size, price) {
       currentSelectedSize = size;
       document.querySelectorAll('.modal-size-box').forEach(box => {
@@ -1594,28 +1657,23 @@
       document.getElementById('modal-price').textContent = `S/ ${currentModalPrice.toFixed(2)}`;
       updateModalTotalButton();
     }
-
     function updateModalQty(change) {
       currentModalQty = Math.max(1, currentModalQty + change);
       document.getElementById('modal-qty-display').textContent = currentModalQty;
       updateModalTotalButton();
     }
-
     function updateModalTotalButton() {
       const total = currentModalPrice * currentModalQty;
       document.getElementById('modal-add-btn-text').textContent = `Agregar - S/. ${total.toFixed(2)}`;
     }
-
     function closeProductModal() {
       document.getElementById('product-modal').classList.add('hidden');
     }
-
     function handleModalBackdropClick(event) {
       if (event.target === document.getElementById('product-modal')) {
         closeProductModal();
       }
     }
-
     function addModalItemToCart() {
       if (!selectedModalProduct) return;
       const variantName = currentSelectedVariant ? currentSelectedVariant.name : 'Estándar';
@@ -1623,7 +1681,6 @@
       const cartKey = `${selectedModalProduct.id}-${variantName}-${currentSelectedSize}`;
       const existing = cart.find(i => i.cartKey === cartKey);
       const fullName = `${selectedModalProduct.name} [${variantName}${sizeSuffix}]`;
-
       if (existing) {
         existing.qty += currentModalQty;
       } else {
@@ -1640,7 +1697,6 @@
       closeProductModal();
       toggleCart();
     }
-
     function addAccessoryToCart(name, price, img) {
       const cartKey = `acc-${name}-${Date.now()}`;
       cart.push({
@@ -1655,7 +1711,6 @@
       closeProductModal();
       toggleCart();
     }
-
     function handleMorralUpload(event) {
       const file = event.target.files[0];
       if (file) {
@@ -1669,7 +1724,6 @@
         reader.readAsDataURL(file);
       }
     }
-
     function submitMorralWhatsApp() {
       const nombre = document.getElementById('form-nombre').value;
       const whatsapp = document.getElementById('form-whatsapp').value;
@@ -1678,17 +1732,14 @@
       const fuelle = document.getElementById('form-fuelle').value || 'N/A';
       const modelo = document.getElementById('form-modelo').value;
       const desc = document.getElementById('form-desc').value;
-
       let msg = `¡Hola! Deseo cotizar un morral personalizado en Milenio Vintage:\n\n`;
       msg += `*Nombre:* ${nombre}\n`;
       msg += `*WhatsApp:* ${whatsapp}\n`;
       msg += `*Medidas (Alto x Ancho x Fuelle):* ${alto}cm x ${ancho}cm x ${fuelle}cm\n`;
       msg += `*Modelo de Referencia:* ${modelo}\n`;
       msg += `*Descripción:* ${desc}\n\nQuedo atento(a) a la cotización exacta. ¡Gracias!`;
-
       window.open(`https://wa.me/51926412894?text=${encodeURIComponent(msg)}`, '_blank');
     }
-
     function handlePinUpload(event) {
       const file = event.target.files[0];
       if (file) {
@@ -1703,17 +1754,14 @@
         reader.readAsDataURL(file);
       }
     }
-
     function updatePinQty(change) {
       pinConfig.qty = Math.max(1, pinConfig.qty + change);
       document.getElementById('pin-qty-display').textContent = pinConfig.qty;
       updatePinPricingUI();
     }
-
     function hasBagInCart() {
       return cart.some(i => i.category === 'morrales' || i.category === 'mochilas' || i.category === 'bolsos');
     }
-
     function getPinUnitPrice(additionalQty = 0) {
       if (hasBagInCart()) return 2.00;
       
@@ -1724,7 +1772,6 @@
       if (totalPins >= 5) return 3.00;
       return 3.50;
     }
-
     function normalizePinPricesInCart() {
       const hasBag = hasBagInCart();
       const totalPins = cart.filter(i => i.category === 'pines').reduce((sum, item) => sum + item.qty, 0);
@@ -1744,7 +1791,6 @@
         }
       });
     }
-
     function updatePinPricingUI() {
       const unitPrice = getPinUnitPrice(pinConfig.qty);
       const total = pinConfig.qty * unitPrice;
@@ -1757,7 +1803,6 @@
         : `Precio unitario: S/ ${unitPrice.toFixed(2)} c/u (Total acumulado: ${totalPinsAccumulated} unid.)`;
       document.getElementById('pin-total-price').textContent = `S/ ${total.toFixed(2)}`;
     }
-
     function addPinToCart() {
       const unitPrice = getPinUnitPrice(pinConfig.qty);
       cart.push({
@@ -1771,7 +1816,6 @@
       saveCart();
       toggleCart();
     }
-
     function addToCart(productId) {
       const prod = products.find(p => p.id === productId);
       if (!prod) return;
@@ -1779,26 +1823,23 @@
       const existing = cart.find(i => i.cartKey === cartKey);
       if (existing) existing.qty++;
       else cart.push({ cartKey, name: prod.name, price: prod.price, qty: 1, img: prod.img, category: prod.category });
-      saveCart();
+      saveCard();
       toggleCart();
     }
-
     function updateCartQty(cartKey, change) {
       const item = cart.find(i => i.cartKey === cartKey);
       if (item) {
         item.qty += change;
         if (item.qty <= 0) cart = cart.filter(i => i.cartKey !== cartKey);
-        saveCart();
+        saveCard();
       }
     }
-
-    function saveCart() {
+    function saveCard() {
       normalizePinPricesInCart();
       localStorage.setItem('milenio_cart', JSON.stringify(cart));
       updateCartUI();
       updatePinPricingUI();
     }
-
     function updateCartUI() {
       const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
       document.getElementById('cart-counter').textContent = totalCount;
@@ -1823,16 +1864,13 @@
           </div>
         </div>
       `).join('');
-
       const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
       document.getElementById('cart-subtotal').textContent = `S/ ${subtotal.toFixed(2)}`;
       document.getElementById('cart-total').textContent = `S/ ${subtotal.toFixed(2)}`;
     }
-
     function toggleCart() {
       document.getElementById('cart-drawer').classList.toggle('hidden');
     }
-
     function proceedToCheckout() {
       if (cart.length === 0) {
         alert("Tu carrito está vacío.");
@@ -1843,7 +1881,6 @@
       renderCheckoutSummary();
       setShippingType('domicilio');
     }
-
     function setShippingType(type) {
       currentShippingType = type;
       ['domicilio', 'estacion', 'provincia'].forEach(t => {
@@ -1854,7 +1891,6 @@
           card.className = "ship-card border-2 border-slate-200 hover:border-slate-300 rounded-2xl p-3.5 sm:p-4 cursor-pointer text-center space-y-1.5 sm:space-y-2 transition card-3d";
         }
       });
-
       const container = document.getElementById('shipping-details-container');
       if (type === 'domicilio') {
         container.innerHTML = `
@@ -1924,7 +1960,6 @@
       }
       renderCheckoutSummary();
     }
-
     function toggleEstacionList() {
       const sistema = document.getElementById('chk-sistema-transporte').value;
       const selectEst = document.getElementById('chk-estacion-oficial');
@@ -1934,14 +1969,12 @@
         selectEst.innerHTML = estacionesMetropolitano.map(e => `<option value="Metropolitano - ${e}">${e}</option>`).join('');
       }
     }
-
     function getShippingFeeCheckout() {
       if (currentShippingType === 'domicilio') return 10.00;
       if (currentShippingType === 'estacion') return 5.00;
       if (currentShippingType === 'provincia') return 18.00;
       return 0.00;
     }
-
     function renderCheckoutSummary() {
       const itemsContainer = document.getElementById('checkout-items-summary');
       itemsContainer.innerHTML = cart.map(item => `
@@ -1950,22 +1983,18 @@
           <span class="font-semibold text-slate-900">S/ ${(item.price * item.qty).toFixed(2)}</span>
         </div>
       `).join('');
-
       const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
       const envio = getShippingFeeCheckout();
       const total = subtotal + envio;
-
       document.getElementById('chk-subtotal').textContent = `S/ ${subtotal.toFixed(2)}`;
       document.getElementById('chk-envio').textContent = `S/ ${envio.toFixed(2)}`;
       document.getElementById('chk-total').textContent = `S/ ${total.toFixed(2)}`;
     }
-
     function confirmOrderWhatsApp() {
       const nombre = document.getElementById('chk-nombre').value;
       const whatsapp = document.getElementById('chk-whatsapp').value;
       const pago = document.querySelector('input[name="pago"]:checked').value;
       let envioTexto = "";
-
       if (currentShippingType === 'domicilio') {
         const dir = document.getElementById('chk-dir').value;
         const dist = document.getElementById('chk-dist').value;
@@ -1982,7 +2011,6 @@
         const dni = document.getElementById('chk-dni').value;
         envioTexto = `Provincia (${agencia}, Ciudad: ${ciudad}, Of: ${oficina}, DNI: ${dni}) - S/ 18.00`;
       }
-
       let message = `¡Hola! Deseo confirmar mi pedido en Milenio Vintage:\n\n`;
       message += `*Cliente:* ${nombre}\n`;
       message += `*WhatsApp:* ${whatsapp}\n\n`;
@@ -1990,18 +2018,15 @@
       cart.forEach((item, idx) => {
         message += `${idx + 1}. ${item.name} (Cant: ${item.qty}) - S/ ${(item.price * item.qty).toFixed(2)}\n`;
       });
-
       const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
       const envio = getShippingFeeCheckout();
       const total = subtotal + envio;
-
       message += `\n*Método de Envío:* ${envioTexto}`;
       message += `\n*Método de Pago:* ${pago}`;
       message += `\nSubtotal: S/ ${subtotal.toFixed(2)}`;
       message += `\nEnvío: S/ ${envio.toFixed(2)}`;
       message += `\n*Total a Pagar: S/ ${total.toFixed(2)}*`;
       message += `\n\nQuedo atento(a) para el envío de mi comprobante Yape/Plin/Transferencia. ¡Gracias!`;
-
       window.open(`https://wa.me/51926412894?text=${encodeURIComponent(message)}`, '_blank');
     }
 
